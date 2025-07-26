@@ -1,18 +1,28 @@
 {
-    "name": "ticket-bot",
-    "version": "1.0.0",
-    "description": "A simple ticket bot",
-    "main": "main.js",
-    "scripts": {
-        "dev": "node --watch --env-file .env main.js",
-        "start": "node main.js"
-    },
-    "author": "zhon12345",
-    "license": "ISC",
-    "dependencies": {
-        "discord.js": "^12.5.3",
-        "express": "^4.21.2",
-        "moment": "^2.30.1",
-        "sourcebin_js": "0.0.3-ignore"
-    }
+	"name": "ticket-bot",
+	"version": "1.0.0",
+	"description": "A simple ticket bot",
+	"main": "main.js",
+	"scripts": {
+		"format": "prettier --write .",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"dev": "node --watch --env-file .env main.js",
+		"start": "node main.js"
+	},
+	"author": "zhon12345",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^12.5.3",
+		"express": "^4.21.2",
+		"moment": "^2.30.1",
+		"sourcebin_js": "0.0.3-ignore"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.32.0",
+		"eslint": "^9.32.0",
+		"eslint-config-prettier": "^10.1.8",
+		"globals": "^16.3.0",
+		"prettier": "3.6.2"
+	}
 }
