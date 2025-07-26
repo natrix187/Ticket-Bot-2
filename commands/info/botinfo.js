@@ -1,36 +1,35 @@
-/* eslint-disable no-unused-vars */
-const { MessageEmbed, version: djsversion } = require('discord.js');
-const { formatBytes, parseDur } = require('../../functions.js');
+const { MessageEmbed, version: djsversion } = require("discord.js");
+const { formatBytes, parseDur } = require("../../functions.js");
 const { BOT_OWNER } = process.env;
-const moment = require('moment');
-const os = require('node:os');
+const moment = require("moment");
+const os = require("node:os");
 
 const formatOS = {
-	aix: 'IBM AIX',
-	darwin: 'MacOS',
-	freebsd: 'FreeBSD',
-	linux: 'Linux',
-	openbsd: 'OpenBSD',
-	sunos: 'SunOS',
-	win32: 'Windows',
+	aix: "IBM AIX",
+	darwin: "MacOS",
+	freebsd: "FreeBSD",
+	linux: "Linux",
+	openbsd: "OpenBSD",
+	sunos: "SunOS",
+	win32: "Windows",
 };
 
 module.exports = {
-	name: 'botinfo',
-	category: 'Info',
-	description: 'Displays indept information about the bot.',
-	aliases: ['bot', 'bi'],
-	usage: 'botinfo',
+	name: "botinfo",
+	category: "Info",
+	description: "Displays indept information about the bot.",
+	aliases: ["bot", "bi"],
+	usage: "botinfo",
 	userperms: [],
-	botperms: ['USE_EXTERNAL_EMOJIS'],
-	run: async (client, message, args) => {
+	botperms: ["USE_EXTERNAL_EMOJIS"],
+	run: async (client, message) => {
 		const embed = new MessageEmbed()
 			.setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 512 }))
 			.setColor(message.guild.members.cache.get(client.user.id).displayHexColor)
 			.setFooter(`Requested by ${message.author.tag} `)
 			.setTimestamp()
-			.setTitle('Bot Information')
-			.addField('<:documents:773950876347793449> General ❯', [
+			.setTitle("Bot Information")
+			.addField("<:documents:773950876347793449> General ❯", [
 				`> **<:card:773965449402646549> Bot Name: \`${client.user.tag}\`**`,
 				`> **\\📇 Bot ID: \`${client.user.id}\`**`,
 				`> **\\👑 Bot Owner: \`${client.users.cache.get(BOT_OWNER).tag}\`**`,
@@ -38,16 +37,16 @@ module.exports = {
 				`> **\\👥 Users: \`${client.users.cache.size.toLocaleString()}\` Users**`,
 				`> **\\📺 Channels: \`${client.channels.cache.size.toLocaleString()}\` Channels**`,
 				`> **\\💬 Commands: \`${client.commands.size}\` Commands**`,
-				`> **\\📅 Created: \`${moment(client.user.createdTimestamp).format('MMMM Do YYYY, h:mm:ss')}\` | \`${Math.floor((Date.now() - client.user.createdTimestamp) / 86400000)}\` day(s) ago**`,
-				'\u200b',
+				`> **\\📅 Created: \`${moment(client.user.createdTimestamp).format("MMMM Do YYYY, h:mm:ss")}\` | \`${Math.floor((Date.now() - client.user.createdTimestamp) / 86400000)}\` day(s) ago**`,
+				"\u200b",
 			])
-			.addField('<:documents:773950876347793449> System ❯', [
+			.addField("<:documents:773950876347793449> System ❯", [
 				`> **<:online:745651877382717560> Uptime: ${parseDur(client.uptime)}**`,
 				`> **<:nodejs:773599989724348448> Node.js: \`${process.version}\`**`,
 				`> **<:djs:773599989833400371> Discord.js: \`v${djsversion}\`**`,
 				`> **\\🖥 Platform: \`${formatOS[os.platform]}\`**`,
 				`> **\\📊 Memory: \`${formatBytes(process.memoryUsage().heapUsed)} / ${formatBytes(process.memoryUsage().heapTotal)}\`**`,
-				`> **\\💻 CPU: \`${os.cpus()[0].model.split('CPU')[0]}${os.cpus().length} Cores\`**`,
+				`> **\\💻 CPU: \`${os.cpus()[0].model.split("CPU")[0]}${os.cpus().length} Cores\`**`,
 			]);
 		message.channel.send(embed);
 	},

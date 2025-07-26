@@ -7,11 +7,11 @@ module.exports = async (client) => {
 		`${client.guilds.cache.size} Servers`,
 	];
 
-	setInterval(function() {
+	setInterval(function () {
 		const status = botStatus[Math.floor(Math.random() * botStatus.length)];
-		client.user.setActivity(`${BOT_PREFIX}help | ${status}`, { type: 'PLAYING' });
+		client.user.setActivity(`${BOT_PREFIX}help | ${status}`, { type: "PLAYING" });
 	}, 30000);
 
 	console.log(`Logged in as ${client.user.tag}`);
-	console.log('Prefix:', BOT_PREFIX);
+	console.log("Prefix:", BOT_PREFIX);
 };

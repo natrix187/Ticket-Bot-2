@@ -6,7 +6,7 @@ This project is a 24 hours challenge to make a simple Discord ticket bot using [
 
 ## 💬 Commands
 
--   Info
+- Info
 
 | Command | Description                                          |
 | ------- | ---------------------------------------------------- |
@@ -15,7 +15,7 @@ This project is a 24 hours challenge to make a simple Discord ticket bot using [
 | ping    | Returns the bot's latency and API ping.              |
 | uptime  | Check how long has the bot been online.              |
 
--   Owner
+- Owner
 
 | Command | Description                           |
 | ------- | ------------------------------------- |
@@ -23,7 +23,7 @@ This project is a 24 hours challenge to make a simple Discord ticket bot using [
 | restart | Restarts the bot.                     |
 | test    | Checks if the bot is working.         |
 
--   Ticket
+- Ticket
 
 | Command    | Description                             |
 | ---------- | --------------------------------------- |

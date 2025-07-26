@@ -1,4 +1,4 @@
-const { validatePermissions } = require('../../functions');
+const { validatePermissions } = require("../../functions");
 const { BOT_PREFIX, BOT_OWNER } = process.env;
 
 module.exports = async (client, message) => {
@@ -23,28 +23,27 @@ module.exports = async (client, message) => {
 
 	if (command) {
 		if (command.userperms.length > 0 || command.botperms.length > 0) {
-			if (typeof command.userperms === 'string') {
+			if (typeof command.userperms === "string") {
 				command.userperms = command.userperms.split();
 				validatePermissions(command.userperms);
 			}
 
-			for(const permission of command.userperms) {
-				if(permission === 'BOT_OWNER' && message.member.id !== BOT_OWNER) {
+			for (const permission of command.userperms) {
+				if (permission === "BOT_OWNER" && message.member.id !== BOT_OWNER) {
 					return;
-				}
-				else if(!message.member.hasPermission(permission)) {
+				} else if (!message.member.hasPermission(permission)) {
 					return message.channel.send(
 						`<:vError:725270799124004934> Insufficient Permission! \`${permission}\` required.`,
 					);
 				}
 			}
 
-			if(typeof command.botperms === 'string') {
+			if (typeof command.botperms === "string") {
 				command.botperms = command.botperms.split();
 				validatePermissions(command.botperms);
 			}
 
-			for(const permission of command.botperms) {
+			for (const permission of command.botperms) {
 				if (!message.guild.me.hasPermission(permission)) {
 					return message.channel.send(
 						`<:vError:725270799124004934> Insufficient Permission! I require \`${permission}\`.`,
